@@ -85,9 +85,12 @@ def photo():
     img = np.array(imgfile)
 
 
+    my_phi = st.slider('Change Value to increase or decrease contours',min_value = -35,max_value = 35)  
+
     # Setting Parameter
-    phi = 25 # [-70~70]
+    #phi = 25 # [-70~70]
              # unit degree
+    phi = my_phi
     scale_factor = 1 #(this is optional)
 
     k = 0.7 # need to be positive-value
