@@ -36,11 +36,11 @@ def main():
 
 def welcome():
     
-    st.title('Image Processing using Streamlit')
+    st.title('Hi there, welcome to our web app')
     
-    st.subheader('A simple app that shows different image processing algorithms. You can choose the options'
-             + ' from the left. I have implemented only a few to show how it works on Streamlit. ' + 
-             'You are free to add stuff to this app.')
+    st.subheader('ECE 278A Digital Image Processing @UCSB'
+             + 'Team: Sean MacKenzie, Rami Dabit and Peter Li.' + 
+             'You are free to interact with our web app.')
     
     #st.image('hackershrine.jpg',use_column_width=True)
 
