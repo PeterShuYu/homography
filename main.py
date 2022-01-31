@@ -7,8 +7,8 @@ Created on Tue Oct 27 20:37:29 2020
 
 import streamlit as st
 from PIL import Image
-#import cv2 
-#import numpy as np
+import cv2 
+import numpy as np
 
 
 
@@ -21,9 +21,10 @@ def main():
     
     if selected_box == 'Welcome':
         welcome() 
-        '''
+        
     if selected_box == 'Image Processing':
         photo()
+'''
     if selected_box == 'Video':
         video()
     if selected_box == 'Face Detection':
@@ -43,7 +44,7 @@ def welcome():
              'You are free to add stuff to this app.')
     
     st.image('hackershrine.jpg',use_column_width=True)
-'''
+
 
 def load_image(filename):
     image = cv2.imread(filename)
@@ -67,7 +68,7 @@ def photo():
     thresh1 = thresh1.astype(np.float64)
     st.image(thresh1, use_column_width=True,clamp = True)
     
-    st.text("Bar Chart of the image")
+    st.text(x)
     histr = cv2.calcHist([image],[0],None,[256],[0,256])
     st.bar_chart(histr)
     
@@ -94,7 +95,7 @@ def photo():
         st.image(img, use_column_width=True, clamp = True)
          
 
-    
+'''    
 def video():
     uploaded_file = st.file_uploader("Choose a video file to play")
     if uploaded_file is not None:
@@ -196,8 +197,8 @@ def object_detection():
                               (x + height, y + width),  
                               (0, 255, 0), 5) 
         st.image(img_rgb_, use_column_width=True,clamp = True)
-    
- '''   
+'''    
+  
     
     
 if __name__ == "__main__":
