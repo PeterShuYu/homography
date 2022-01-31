@@ -40,7 +40,7 @@ def welcome():
     
     st.subheader('ECE 278A Digital Image Processing @UCSB')
     st.subheader('Team: Sean MacKenzie, Rami Dabit and Peter Li.') 
-    st.subheader('You are free to interact with our web app.')
+    st.subheader('Feel free to interact with our web app.')
     
     #st.image('hackershrine.jpg',use_column_width=True)
 
