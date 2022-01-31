@@ -51,35 +51,17 @@ def load_image(filename):
  
 def photo():
 
-    url='https://images.unsplash.com/photo-1613048998835-efa6e3e3dc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
-
-    response = requests.get(url)
-    #imgfile = Image.open(BytesIO(response.content))
+ 
 
 
-    st.header("Thresholding, Edge Detection and Contours")
+    st.header("Image-Formation: Homography")
     
-    if st.button('See Original Image of Tom'):
-        
-        original = Image.open(BytesIO(response.content))
-        st.image(original, use_column_width=True)
-        
-    image = cv2.imread("tom.jpg")
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    
-    x = st.slider('Change Threshold value',min_value = 50,max_value = 255)  
 
-    ret,thresh1 = cv2.threshold(image,x,255,cv2.THRESH_BINARY)
-    thresh1 = thresh1.astype(np.float64)
-    st.image(thresh1, use_column_width=True,clamp = True)
-    
-    st.text(x)
-    histr = cv2.calcHist([image],[0],None,[256],[0,256])
-    st.bar_chart(histr)
     
     #========================================================
     # my own start
-
+ 
+    url='https://images.unsplash.com/photo-1613048998835-efa6e3e3dc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
 
 
     response = requests.get(url)
@@ -88,10 +70,12 @@ def photo():
 
 
     if st.button('Original Image'):
+        #[Remind] use st.image to plot
         st.image(img, use_column_width=True)
-        
+
     my_phi = st.slider('Change angle to decide camera position',min_value = -35,max_value = 35)  
     my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.2,max_value = 1.0) 
+    
     # Setting Parameter
     #phi = 25 # [-70~70]
              # unit degree
@@ -102,9 +86,6 @@ def photo():
     k = my_k
     b = 0.5 # fix
 
-    #increment = np.tan((phi/180)*3.14)
-    #l_side = np.sqrt(5) + increment
-    #r_side = np.sqrt(5) - increment
 
     increment = ((k+b)/b)*np.tan((phi/180)*3.14)
     l_side = np.sqrt( ((k+b)/b)**2 + (k+b)**2 ) + increment
@@ -115,8 +96,6 @@ def photo():
     origin_wid = img.shape[1]/2
 
     transform_center = [ origin_wid , origin_len ]
-    #transform_l = (0.5*np.sqrt(5)/l_side)*origin_len
-    #transform_r = (0.5*np.sqrt(5)/r_side)*origin_len
 
     transform_l = (np.sqrt(1+b**2)/l_side)*origin_len
     transform_r = (np.sqrt(1+b**2)/r_side)*origin_len
@@ -126,7 +105,6 @@ def photo():
 
 
     #source coordinates
-
     src_i = np.array([0, 0, 
                     0, img.shape[0],
                     img.shape[1], img.shape[0],
@@ -135,12 +113,10 @@ def photo():
 
 
     #destination coordinates
-
     dst_i = np.array([transform_center[0]-transform_wid*scale_factor, transform_center[1]-transform_l*scale_factor, 
                     transform_center[0]-transform_wid*scale_factor, transform_center[1]+transform_l*scale_factor,
                     transform_center[0]+transform_wid*scale_factor, transform_center[1]+transform_r*scale_factor,
                     transform_center[0]+transform_wid*scale_factor, transform_center[1]-transform_r*scale_factor,]).reshape((4, 2))    
-
 
 
     #using skimage’s transform module where ‘projective’ is our desired parameter
@@ -159,34 +135,13 @@ def photo():
     plt.show()
 
     
-        
+    #[Remind] use st.image to plot
     st.image(tf_img, use_column_width=True)
 
     # my own end
     #========================================================
 
-    st.text("Press the button below to view Canny Edge Detection Technique")
-    if st.button('Canny Edge Detector'):
-        image = load_image("jerry.jpg")
-        edges = cv2.Canny(image,50,300)
-        cv2.imwrite('edges.jpg',edges)
-        st.image(edges,use_column_width=True,clamp=True)
-      
-    y = st.slider('Change Value to increase or decrease contours',min_value = 50,max_value = 255)     
-    
-    if st.button('Contours'):
-        im = load_image("jerry1.jpg")
-          
-        imgray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-        ret,thresh = cv2.threshold(imgray,y,255,0)
-        image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
-        
-        img = cv2.drawContours(im, contours, -1, (0,255,0), 3)
- 
-        
-        st.image(thresh, use_column_width=True, clamp = True)
-        st.image(img, use_column_width=True, clamp = True)
-        
+   
 
 
   
