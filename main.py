@@ -80,11 +80,16 @@ def photo():
     #========================================================
     # my own start
 
+
+
     response = requests.get(url)
     imgfile = Image.open(BytesIO(response.content))
     img = np.array(imgfile)
 
 
+    if st.button('Original Image'):
+        st.image(img, use_column_width=True)
+        
     my_phi = st.slider('Change angle to decide camera position',min_value = -35,max_value = 35)  
     my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.2,max_value = 1.0) 
     # Setting Parameter
@@ -144,7 +149,7 @@ def photo():
 
     #plotting the original image
     plt.imshow(img)
-    st.image(img, use_column_width=True)
+    
 
     #plotting the transformed image
     fig, ax = plt.subplots()
@@ -153,6 +158,8 @@ def photo():
     plt.plot(transform_center[0],transform_center[1],'x')
     plt.show()
 
+    
+        
     st.image(tf_img, use_column_width=True)
 
     # my own end
