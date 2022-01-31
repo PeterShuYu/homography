@@ -16,7 +16,7 @@ def main():
 
     selected_box = st.sidebar.selectbox(
     'Choose one of the following',
-    ('Welcome','Image Processing', 'Video', 'Face Detection', 'Feature Detection', 'Object Detection')
+    ('Welcome','Image Processing' ''', 'Video', 'Face Detection', 'Feature Detection', 'Object Detection' ''')
     )
     
     if selected_box == 'Welcome':
