@@ -79,6 +79,11 @@ def photo():
     
     # my own start
 
+    response = requests.get(url)
+    imgfile = Image.open(BytesIO(response.content))
+    img = np.array(imgfile)
+
+
     # Setting Parameter
     phi = 25 # [-70~70]
              # unit degree
