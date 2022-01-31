@@ -24,7 +24,7 @@ def main():
 
     selected_box = st.sidebar.selectbox(
     'Choose one of the following',
-    ('Welcome','Image Processing')
+    ('Welcome','Homography')
     )
     
     if selected_box == 'Welcome':
