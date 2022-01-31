@@ -149,6 +149,8 @@ def photo():
     plt.plot(transform_center[0],transform_center[1],'x')
     plt.show()
 
+    st.image(tf_img, use_column_width=True)
+
     # my own end
     #========================================================
 
