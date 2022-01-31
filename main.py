@@ -85,15 +85,16 @@ def photo():
     img = np.array(imgfile)
 
 
-    my_phi = st.slider('Change Value to increase or decrease contours',min_value = -35,max_value = 35)  
-
+    my_phi = st.slider('Change angle to decide camera position',min_value = -35,max_value = 35)  
+    my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.5,max_value = 1.0) 
     # Setting Parameter
     #phi = 25 # [-70~70]
              # unit degree
     phi = my_phi
     scale_factor = 1 #(this is optional)
 
-    k = 0.7 # need to be positive-value
+    #k = 0.7 # need to be positive-value
+    k = my_k
     b = 0.5 # fix
 
     #increment = np.tan((phi/180)*3.14)
