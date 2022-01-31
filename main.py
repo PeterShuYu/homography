@@ -70,10 +70,10 @@ def photo():
     
     if st.button('See Original Image of Tom'):
         
-        original = Image.open('tom.jpg')
+        original = Image.open(BytesIO(response.content))
         st.image(original, use_column_width=True)
         
-    image = cv2.imread('tom.jpg')
+    image = cv2.imread("tom.jpg")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     x = st.slider('Change Threshold value',min_value = 50,max_value = 255)  
