@@ -77,6 +77,7 @@ def photo():
     histr = cv2.calcHist([image],[0],None,[256],[0,256])
     st.bar_chart(histr)
     
+    #========================================================
     # my own start
 
     response = requests.get(url)
@@ -139,6 +140,7 @@ def photo():
 
     #plotting the original image
     plt.imshow(img)
+    st.image(img, use_column_width=True)
 
     #plotting the transformed image
     fig, ax = plt.subplots()
@@ -148,7 +150,7 @@ def photo():
     plt.show()
 
     # my own end
-    
+    #========================================================
 
     st.text("Press the button below to view Canny Edge Detection Technique")
     if st.button('Canny Edge Detector'):
