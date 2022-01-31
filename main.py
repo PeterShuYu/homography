@@ -86,7 +86,7 @@ def photo():
 
 
     my_phi = st.slider('Change angle to decide camera position',min_value = -35,max_value = 35)  
-    my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.5,max_value = 1.0) 
+    my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.2,max_value = 1.0) 
     # Setting Parameter
     #phi = 25 # [-70~70]
              # unit degree
