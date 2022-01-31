@@ -10,6 +10,14 @@ from PIL import Image
 import cv2 
 import numpy as np
 
+from skimage.io import imread, imshow
+from skimage import transform
+import matplotlib.pyplot as plt
+#import numpy as np
+import requests
+from io import BytesIO
+
+
 
 
 def main():
@@ -43,7 +51,7 @@ def welcome():
              + ' from the left. I have implemented only a few to show how it works on Streamlit. ' + 
              'You are free to add stuff to this app.')
     
-    st.image('hackershrine.jpg',use_column_width=True)
+    #st.image('hackershrine.jpg',use_column_width=True)
 
 
 def load_image(filename):
@@ -51,6 +59,12 @@ def load_image(filename):
     return image
  
 def photo():
+
+    url='https://images.unsplash.com/photo-1613048998835-efa6e3e3dc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
+
+    response = requests.get(url)
+    #imgfile = Image.open(BytesIO(response.content))
+
 
     st.header("Thresholding, Edge Detection and Contours")
     
