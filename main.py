@@ -30,8 +30,8 @@ def main():
     if selected_box == 'Welcome':
         welcome() 
         
-    if selected_box == 'Image Processing':
-        photo()
+    if selected_box == 'Homography':
+        Homography()
 
 
 def welcome():
@@ -49,7 +49,7 @@ def load_image(filename):
     image = cv2.imread(filename)
     return image
  
-def photo():
+def Homography():
 
  
 
