@@ -94,8 +94,8 @@ def Homography():
         #[Remind] use st.image to plot
         st.image(img, use_column_width=True)
 
-    my_phi = st.slider('Change angle to decide camera position',min_value = -35,max_value = 35)  
-    my_k = st.slider('Change Value to zoon in or zoom out',min_value = -0.2,max_value = 1.0) 
+    my_phi = st.slider('Change angle to decide camera position:',min_value = -35,max_value = 35, value=0)  
+    my_k = st.slider('Change value to zoon in or zoom out:',min_value = -0.2,max_value = 1.0, value=0.2) 
     
     # Setting Parameter
     #phi = 25 # [-70~70]
@@ -155,19 +155,27 @@ def Homography():
     plt.plot(transform_center[0],transform_center[1],'x')
     plt.show()
 
-    
-    #[Remind] use st.image to plot
-    st.image(tf_img, use_column_width=True)
-
+    # streamlit explanation
     if my_phi > 0:
         direction_string = "to right at " + str(my_phi)+ " degrees."
     elif my_phi < 0:
         direction_string = "to left at " + str(-my_phi)+ " degrees."
+
+    if my_k > 0:
+        distance_string = " Out ."
+    elif my_k < 0:
+        distance_string = " In."
+
     string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
-    #numerical_aperture_string = "NA = {} degrees".format(np.round(NA * 360 / (2 * np.pi), 2))
+    string_zoomInOut  = " Zoom ".format(distance_string)
 
     st.caption(body=string_camera_posi)
-    #st.caption(body=numerical_aperture_string)
+    st.caption(body=string_zoomInOut)
+
+    #[Remind] use st.image to plot
+    st.image(tf_img, use_column_width=True)
+
+
 
 
     # my own end
