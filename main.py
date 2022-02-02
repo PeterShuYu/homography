@@ -163,16 +163,18 @@ def Homography():
 
     # streamlit explanation
     if my_phi > 0:
-        direction_string = "to right at " + str(my_phi)+ " degrees."
+        direction_string = "rotate from original position to right at " + str(my_phi)+ " degrees."
     elif my_phi < 0:
-        direction_string = "to left at " + str(-my_phi)+ " degrees."
+        direction_string = "rotate from original position to left at " + str(-my_phi)+ " degrees."
+    else:
+        direction_string = "is at original position ."
 
     if my_k > 0:
         distance_string = " Out ."
     elif my_k < 0:
         distance_string = " In."
 
-    string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
+    string_camera_posi = " Camera {} ".format(direction_string)
     string_zoomInOut  = " Zoom {} ".format(distance_string)
 
     st.caption(body=string_camera_posi)
