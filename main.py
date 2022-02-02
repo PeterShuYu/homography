@@ -170,12 +170,14 @@ def Homography():
         direction_string = "is at original position ."
 
     if my_k > 0:
-        distance_string = " Out ."
+        distance_string = " Zoom out."
     elif my_k < 0:
-        distance_string = " In."
+        distance_string = " Zoom in."
+    else:
+        distance_string = " No zoom in/out." 
 
     string_camera_posi = " Camera {} ".format(direction_string)
-    string_zoomInOut  = " Zoom {} ".format(distance_string)
+    string_zoomInOut  = "  {} ".format(distance_string)
 
     st.caption(body=string_camera_posi)
     st.caption(body=string_zoomInOut)
