@@ -157,8 +157,6 @@ def Homography():
 
 
 
-    st.caption(body=string_camera_posi)
-    st.caption(body=string_zoomInOut)
 
     #[Remind] use st.image to plot
     st.image(tf_img, use_column_width=True)
@@ -177,6 +175,8 @@ def Homography():
     string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
     string_zoomInOut  = " Zoom ".format(distance_string)
 
+    st.caption(body=string_camera_posi)
+    st.caption(body=string_zoomInOut)
 
     # my own end
     #========================================================
