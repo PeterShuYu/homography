@@ -173,7 +173,7 @@ def Homography():
         distance_string = " In."
 
     string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
-    string_zoomInOut  = " Zoom ".format(distance_string)
+    string_zoomInOut  = " Zoom {} ".format(distance_string)
 
     st.caption(body=string_camera_posi)
     st.caption(body=string_zoomInOut)
