@@ -155,6 +155,14 @@ def Homography():
     plt.plot(transform_center[0],transform_center[1],'x')
     plt.show()
 
+
+
+    st.caption(body=string_camera_posi)
+    st.caption(body=string_zoomInOut)
+
+    #[Remind] use st.image to plot
+    st.image(tf_img, use_column_width=True)
+
     # streamlit explanation
     if my_phi > 0:
         direction_string = "to right at " + str(my_phi)+ " degrees."
@@ -168,14 +176,6 @@ def Homography():
 
     string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
     string_zoomInOut  = " Zoom ".format(distance_string)
-
-    st.caption(body=string_camera_posi)
-    st.caption(body=string_zoomInOut)
-
-    #[Remind] use st.image to plot
-    st.image(tf_img, use_column_width=True)
-
-
 
 
     # my own end
