@@ -161,7 +161,7 @@ def Homography():
 
     if my_phi > 0:
         direction_string = "to right at " + str(my_phi)+ " degrees."
-    elif my_phi < 0
+    elif my_phi < 0:
         direction_string = "to left at " + str(-my_phi)+ " degrees."
     string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
     #numerical_aperture_string = "NA = {} degrees".format(np.round(NA * 360 / (2 * np.pi), 2))
