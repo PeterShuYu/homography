@@ -159,6 +159,17 @@ def Homography():
     #[Remind] use st.image to plot
     st.image(tf_img, use_column_width=True)
 
+    if my_phi > 0:
+        direction_string = "to right at " + str(my_phi)+ " degrees."
+    elif my_phi < 0
+        direction_string = "to left at " + str(-my_phi)+ " degrees."
+    string_camera_posi = " Camera rotate from original position {} ".format(direction_string)
+    #numerical_aperture_string = "NA = {} degrees".format(np.round(NA * 360 / (2 * np.pi), 2))
+
+    st.caption(body=string_camera_posi)
+    #st.caption(body=numerical_aperture_string)
+
+
     # my own end
     #========================================================
 
