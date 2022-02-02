@@ -158,8 +158,7 @@ def Homography():
 
 
 
-    #[Remind] use st.image to plot
-    st.image(tf_img, use_column_width=True)
+
 
     # streamlit explanation
     if my_phi > 0:
@@ -181,7 +180,9 @@ def Homography():
 
     st.caption(body=string_camera_posi)
     st.caption(body=string_zoomInOut)
-
+    
+    #[Remind] use st.image to plot
+    st.image(tf_img, use_column_width=True)
     # my own end
     #========================================================
 
